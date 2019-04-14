@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+  <title>复制</title>
+</head>
+
+<body>
+  <input id="span" value="1008611"></input>
+  <button onclick="copy(document.getElementById('span'))">复制</button>
+  <script>
+    function copy(element) {
+      // 创建元素用于复制
+      var aux = document.createElement("input");
+      // 获取复制内容
+      var content = element.innerHTML || element.value;
+      // 设置元素内容
+      aux.setAttribute("value", content);
+      // 将元素插入页面进行调用
+      document.body.appendChild(aux);
+      // 选中元素
+      aux.select();
+      // 将内容复制到剪贴板
+      document.execCommand("copy");
+      // 删除创建元素
+      document.body.removeChild(aux);
+      // 提示
+      alert("复制内容成功：" + aux.value);
+    }
+  </script>
+</body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>数据观察者</title>
+  <style>
+  </style>
+</head>
+
+<body>
+  <button id="set" onclick="a.watchValue = Math.random();">生成随机值</button>
+  <button id="get" onclick="a.watchValue;">获取值</button>
+  <div id="content"></span>
+  <script>
+    var a = { watchValue: 0 };
+    Object.defineProperty(a, 'watchValue', {
+      get: function () {
+        document.getElementById('content').innerHTML += "<p>GET watchValue : " + watchValue + "</p>";
+        return watchValue;
+      },
+      set: function (value) {
+        watchValue = value;
+        document.getElementById('content').innerHTML += "<p>SET watchValue = " + watchValue + "</p>";
+      }
+    });
+  </script>
+</body>
